@@ -1,6 +1,6 @@
 {
   "name": "clay-list-sorter",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Sorter functions for ClayDB list",
   "main": "lib",
   "scripts": {
@@ -41,8 +41,5 @@
   "engines": {
     "node": ">=6",
     "npm": ">=4"
-  },
-  "publishConfig": {
-    "registry": "https://realglobe.artifactoryonline.com/realglobe/api/npm/npm-local"
   }
 }

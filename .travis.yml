@@ -2,13 +2,9 @@ language: node_js
 node_js:
 - '6'
 before_install:
-# TODO OSS
-# - npm i npm-cli-login -g
-# - npm-cli-login -u "${NPM_USER}" -p "${NPM_PASSWORD}" -e "${NPM_EMAIL}"
-# - npm who
-- echo "registry = https://realglobe.artifactoryonline.com/realglobe/api/npm/npm-virtual" > $HOME/.npmrc
-- curl -u${NPM_USER}:${NPM_PASSWORD} "https://realglobe.artifactoryonline.com/realglobe/api/npm/auth" >> $HOME/.npmrc
-- cat $HOME/.npmrc
+- npm i npm-cli-login -g
+- npm-cli-login -u "${NPM_USER}" -p "${NPM_PASSWORD}" -e "${NPM_EMAIL}"
+- npm who
 install:
 - npm install jsdoc -g
 - npm install
@@ -19,4 +15,4 @@ script:
 after_success:
 - ./ci/travis/publish.js
 env:
-  secure: "F2AVQZDn7o2mxoQ2rvKd3z4rctV+zFLk5fcESO6L2vjTcJgLvd4PHskPjZ2AhtuO7eZ1CYIus/6J+AnWHz43F2ZYWkXZA5VGns11ybk8+hgKJqnajksvAZSagbHek6orSqL9TbYppMmxbtafiIO8/v4RAoX8JIr+9+f4B1tuagUKS/2y2o9W55q+kp5aMEjwf6Sq8RfYlnl8trd9L60XXwX8P5RcJGALqIXfdxHJsearvw79W891/V5+WA+Vmq8UYncRjC2naD3fb8ypKDnU8wubkx/keY42YeDM+k2/uBB68OyzVlAbgJHj80l/8cX/aqorRcwxlA6uoqL41UlwjdOMb/ny4We0ua3EQPTr0QUqZWyGod6V6s0uFT8teAIrEuKySczh0d/9DEI0uotZzahe5uyYnERnJQEwoBCalPWbdI5EjeE9ZvQni7FtP3+kuHlwACuuVxpmLVB4xsiSyDbk6U0Fsli8JalXIZSCZxwbh6+TGr+/E8e68hJo5fvbQPiAGjjtzbSVQPNTMtLtOiuNY/45SVRg4QCDn1mqcFRicFzrdtrtUpq8Odv8LB170iyZxG6QNL696FZSFiDF8xkLeNm49Sf1bi6VSqAglCsjAwavQxzpqiiBItciLf34/aYDVh+CCyv354PyR7zWDt+gMvyHGYIu6EjcWRwphWU="
+  secure: "N2eCGVnKdVRiCx9oS5w1/oKFcJRBkRmhOApCE5Lq6ZDPK1TWOalehpq2ECF3l2rRR4eKWb5C0i+bBYbPvKNbYIDcIb4b7v2y+zhCYPVCCkWUzpaoFJDRbfE/tpq8J9ggykDkdRrMsMfhnQuhdXTQUGZJJ6I+OeYF0JCLjkJEJUQZmMMQtTQonbkT14eo9TUL9VeSXlZROkbXWi5tsNGAyT562+ceJsK/YuEc9vaTBz+J3SokFYd76ROIfGG6Zm6lMv2d0MMXWH0hS+d8cq3IEGTEI72x7xaeEE3JY0tytuX7QFhSPDxkj1HKCAOBxilnEfbSil++IKiYsPFbON7bUqNFyP3xicCZN5Qb+Nfd2vpbftCBokSUUSZ0BpgRPSVsNv/8Kdo01lWpxuAdcXjuh7ff1D8xucsCXYPypEpJ8v1QVpi+GHC2gDL8BG5oFxf9I23zlz/WJnPBNqkn8A9HZV1A9e1sXDOARG/yXo4UoIhLtyrdwtpuH/OZozZx9PFx/9ssUbYe4n7QZAvVoXHq64tZ8luUlTSTaKRqOahKlvt6RJAGdzwUo15dY2rFj2XTEGuUhwM0D1rpu/ZcRGJ8mfqc8Zctzdp4VOi4w+CEYkzYq3cW07RLbSRUmNKcmtqvlpvbOWoJS8+HTW1JJWD6xSIqwjfesWxTnOFh8E0zPYA="
