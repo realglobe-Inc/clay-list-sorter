@@ -23,21 +23,21 @@ describe('sort-array', function () {
     let sorted = sortArray([
       { index: 2 }, { index: 3 }, { index: 1 }
     ], 'index')
-    deepEqual(sorted, [ { index: 1 }, { index: 2 }, { index: 3 } ])
+    deepEqual(sorted, [{ index: 1 }, { index: 2 }, { index: 3 }])
   }))
 
   it('Reverse', () => co(function * () {
     let sorted = sortArray([
       { index: 2 }, { index: 3 }, { index: 1 }
     ], '-index')
-    deepEqual(sorted, [ { index: 3 }, { index: 2 }, { index: 1 } ])
+    deepEqual(sorted, [{ index: 3 }, { index: 2 }, { index: 1 }])
   }))
 
   it('Nested', () => co(function * () {
     let sorted = sortArray([
       { v: { index: 2 } }, { v: { index: 3 } }, { v: { index: 1 } }
     ], '-v.index')
-    deepEqual(sorted, [ { v: { index: 3 } }, { v: { index: 2 } }, { v: { index: 1 } } ])
+    deepEqual(sorted, [{ v: { index: 3 } }, { v: { index: 2 } }, { v: { index: 1 } }])
   }))
 
   it('Array', () => co(function * () {
@@ -45,13 +45,28 @@ describe('sort-array', function () {
       { name: 'foo', at: new Date('2015/11/12') },
       { name: 'bar', at: new Date('2012/11/12') },
       { name: 'foo', at: new Date('2013/11/12') }
-    ], [ 'name', 'at' ])
-    equal(sorted[ 0 ].name, 'bar')
-    equal(sorted[ 0 ].at.getTime(), new Date('2012/11/12').getTime())
-    equal(sorted[ 1 ].name, 'foo')
-    equal(sorted[ 1 ].at.getTime(), new Date('2013/11/12').getTime())
-    equal(sorted[ 2 ].name, 'foo')
-    equal(sorted[ 2 ].at.getTime(), new Date('2015/11/12').getTime())
+    ], ['name', 'at'])
+    equal(sorted[0].name, 'bar')
+    equal(sorted[0].at.getTime(), new Date('2012/11/12').getTime())
+    equal(sorted[1].name, 'foo')
+    equal(sorted[1].at.getTime(), new Date('2013/11/12').getTime())
+    equal(sorted[2].name, 'foo')
+    equal(sorted[2].at.getTime(), new Date('2015/11/12').getTime())
+  }))
+
+  it('Array with dot', () => co(function * () {
+    let sorted = sortArray([
+      { 'x.name': 'foo', at: new Date('2015/11/12') },
+      { 'x.name': 'bar', at: new Date('2012/11/12') },
+      { 'x.name': 'foo', at: new Date('2013/11/12') }
+    ], ['x.name', 'at'])
+    equal(sorted[0]['x.name'], 'bar')
+    equal(sorted[0]['x.name'], 'bar')
+    equal(sorted[0].at.getTime(), new Date('2012/11/12').getTime())
+    equal(sorted[1]['x.name'], 'foo')
+    equal(sorted[1].at.getTime(), new Date('2013/11/12').getTime())
+    equal(sorted[2]['x.name'], 'foo')
+    equal(sorted[2].at.getTime(), new Date('2015/11/12').getTime())
   }))
 })
 
